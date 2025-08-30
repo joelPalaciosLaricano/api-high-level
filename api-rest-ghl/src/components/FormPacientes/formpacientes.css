@@ -1,0 +1,314 @@
+/* Estilos profesionales y detallados para el formulario de pacientes con fondo azul y negro, combinando de forma estética */
+
+:root {
+  --background-color: #181818;
+  --background-gradient: linear-gradient(120deg, #1a1a1a 0%, #003366 100%);
+  --text-color: #fff;
+  --card-background-gradient: linear-gradient(135deg, #003366 0%, #181818 100%);
+  --card-shadow: 0 8px 32px 0 rgba(0, 102, 255, 0.18);
+  --border-color: #2d7fff;
+  --primary-color: #0051c4;
+  --primary-hover-color: #2d7fff;
+  --secondary-color: #181818;
+  --secondary-hover-color: #0051c4;
+  --input-bg: linear-gradient(90deg, #003366 0%, #181818 100%);
+  --input-border: #0051c4;
+  --input-focus: #2d7fff;
+  --label-color: #2d7fff;
+  --modal-bg: linear-gradient(135deg, #003366 0%, #181818 100%);
+  --modal-title: #2d7fff;
+  --modal-btn: #0051c4;
+  --modal-btn-hover: #2d7fff;
+}
+
+/* Fondo general de un solo color que combine con el formulario */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--background-gradient);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Estilo para el formulario principal con animación de entrada */
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--card-background-gradient);
+  padding: 38px 32px 32px 32px;
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+  max-width: 420px;
+  margin: 120px auto 0 auto;
+  border: 2px solid var(--border-color);
+  transition: box-shadow 0.3s, transform 0.4s;
+  animation: fadeInForm 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes fadeInForm {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.Form:hover {
+  box-shadow: 0 12px 36px 0 rgba(0, 102, 255, 0.18);
+  transform: scale(1.015);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  color: var(--label-color);
+  font-size: 1.08em;
+  font-weight: 500;
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  animation: fadeInLabel 1s;
+}
+
+@keyframes fadeInLabel {
+  from { opacity: 0; transform: translateX(-20px);}
+  to { opacity: 1; transform: translateX(0);}
+}
+
+label:focus-within {
+  color: var(--primary-color);
+}
+
+/* Estilo para los inputs y selects con animación de foco */
+input,
+select {
+  padding: 14px 14px 14px 16px;
+  border: 1.5px solid var(--input-border);
+  border-radius: 8px;
+  font-size: 1.05em;
+  background: var(--input-bg);
+  color: var(--text-color);
+  margin-top: 7px;
+  margin-bottom: 12px;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.4s;
+  outline: none;
+  box-shadow: 0 2px 8px 0 rgba(0, 102, 255, 0.07);
+  animation: fadeInInput 1.2s;
+}
+
+@keyframes fadeInInput {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+input:focus,
+select:focus {
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px #2d7fff55;
+  background: #003366;
+}
+
+input::placeholder {
+  color: #b3d1ff;
+  opacity: 1;
+  font-style: italic;
+  transition: color 0.3s;
+}
+
+/* Estilo para el contenedor de la hora */
+.hora-container {
+  position: relative;
+  width: 100%;
+}
+
+.hora-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(90deg, #003366 0%, #181818 100%);
+  border-radius: 8px;
+  border: 1.5px solid var(--border-color);
+  padding: 0 0.7em;
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 2px 8px 0 rgba(0, 102, 255, 0.08);
+  animation: fadeInHora 1.3s;
+}
+
+@keyframes fadeInHora {
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
+}
+
+.input-hora {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.05em;
+  outline: none;
+  padding: 0.8em 0 0.8em 0.5em;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.input-hora:focus {
+  background: #003366;
+}
+
+.ampm-span {
+  background: linear-gradient(90deg, #0051c4 0%, #2d7fff 100%);
+  color: #fff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  margin-left: 0.7em;
+  height: 2.3em;
+  font-size: 1.05em;
+  padding: 0 1.3em 0 0.8em;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  box-shadow: 0 1px 4px 0 rgba(0, 102, 255, 0.10);
+  animation: popIn 0.7s;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  80% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Botones con animaciones */
+button[type="submit"] {
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover-color) 100%);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 1.08em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px 0 rgba(0, 102, 255, 0.13);
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  animation: fadeInBtn 1.3s;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, var(--primary-hover-color) 0%, var(--primary-color) 100%);
+  box-shadow: 0 4px 16px 0 rgba(0, 102, 255, 0.18);
+  transform: translateY(-2px) scale(1.04);
+}
+
+button[type="button"] {
+  background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 1.08em;
+  font-weight: 600;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  margin-top: 7px;
+  box-shadow: 0 2px 8px 0 rgba(0, 102, 255, 0.10);
+  animation: fadeInBtn 1.4s;
+}
+
+button[type="button"]:hover {
+  background: linear-gradient(90deg, var(--secondary-hover-color) 0%, var(--primary-hover-color) 100%);
+  box-shadow: 0 4px 16px 0 rgba(0, 102, 255, 0.15);
+  transform: translateY(-2px) scale(1.04);
+}
+
+@keyframes fadeInBtn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .Form {
+    padding: 16px 6px 18px 6px;
+    max-width: 98%;
+    margin-top: 40px;
+  }
+  input,
+  select,
+  button {
+    font-size: 0.98em;
+    padding: 10px;
+  }
+  .hora-inner {
+    padding: 0 0.2em;
+  }
+}
+
+/* Estilos para el modal de éxito con animación */
+.modal-exito-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 102, 255, 0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+  animation: fadeInModalBg 0.7s;
+}
+
+@keyframes fadeInModalBg {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-exito-contenido {
+  background: var(--modal-bg);
+  padding: 36px 48px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 102, 255, 0.18);
+  text-align: center;
+  border: 2px solid var(--primary-color);
+  animation: modalPop 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  80% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.modal-exito-titulo {
+  color: var(--modal-title);
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 0.04em;
+  animation: fadeInLabel 1s;
+}
+
+.modal-exito-boton {
+  margin-top: 22px;
+  background: linear-gradient(90deg, var(--modal-btn) 0%, var(--modal-btn-hover) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1.08em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0, 102, 255, 0.13);
+  animation: fadeInBtn 1.5s;
+}
+
+.modal-exito-boton:hover {
+  background: linear-gradient(90deg, var(--modal-btn-hover) 0%, var(--modal-btn) 100%);
+  box-shadow: 0 4px 16px 0 rgba(0, 102, 255, 0.18);
+  transform: scale(1.05);
+}
