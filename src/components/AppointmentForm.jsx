@@ -5,10 +5,10 @@ import "./AppointmentForm.css"; // Asegúrate de que este archivo exista
 
 const AppointmentForm = () => {
   const [formData, setFormData] = useState({
-    locationId: "h9CxEloU2oK7TW5nE8YW",
-    calendarId: "JMK1ds2vX46W6Y3gA4vu",
+    locationId: "r3UrTfNuQviYjKT9vfVz",
+    calendarId: "axyoeGirFcFCPIYX56Vw",
     contactId: "", // Este campo debe ser ingresado por el usuario
-    assignedUserId: "to7lJ81QaFgUhFJfogGo",
+    assignedUserId: "k2ny3jf54CukYHhNHHsH",
     startTime: "",
     endTime: "",
     title: "Cita de prueba",
