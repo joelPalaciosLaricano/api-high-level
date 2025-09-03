@@ -7,18 +7,26 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Node.js (frontend y backend JS)
+node_modules/
+dist/
+dist-ssr/
 *.local
 
-# Editor directories and files
+# Python (backend)
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Editor & System
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
