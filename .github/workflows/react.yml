@@ -1,21 +1,10 @@
-
 name: Frontend - React CI
 
 on:
   push:
-    paths:
-      - "src/**"
-      - "public/**"
-      - "package.json"
-      - "package-lock.json"
-      - "vite.config.js"
+    branches: ["main"]
   pull_request:
-    paths:
-      - "src/**"
-      - "public/**"
-      - "package.json"
-      - "package-lock.json"
-      - "vite.config.js"
+    branches: ["main"]
 
 jobs:
   react-build:
@@ -42,3 +31,4 @@ jobs:
         with:
           name: frontend-dist
           path: dist
+
