@@ -3,15 +3,20 @@ import { useState } from "react";
 import { createAppointment } from "../api/appointments";
 import "./AppointmentForm.css"; // Asegúrate de que este archivo exista
 
+// Definimos los valores ocultos fuera del componente para que no aparezcan en el DOM ni en el formulario
+const HIDDEN_FIELDS = {
+  locationId: "r3UrTfNuQviYjKT9vfVz",
+  calendarId: "axyoeGirFcFCPIYX56Vw",
+  contactId: "RZhc8tYfZGmVHK0Gyt0l",
+  assignedUserId: "k2ny3jf54CukYHhNHHsH",
+};
+
 const AppointmentForm = () => {
+  // Solo los campos editables están en el estado del formulario
   const [formData, setFormData] = useState({
-    locationId: "h9CxEloU2oK7TW5nE8YW",
-    calendarId: "JMK1ds2vX46W6Y3gA4vu",
-    contactId: "", // Este campo debe ser ingresado por el usuario
-    assignedUserId: "to7lJ81QaFgUhFJfogGo",
     startTime: "",
     endTime: "",
-    title: "Cita de prueba",
+    title: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -30,10 +35,8 @@ const AppointmentForm = () => {
     setError(null);
 
     // 1. Validación del lado del cliente
-    if (!formData.contactId || !formData.startTime || !formData.endTime) {
-      const missingField = !formData.contactId
-        ? "ID del Contacto"
-        : !formData.startTime
+    if (!formData.startTime || !formData.endTime) {
+      const missingField = !formData.startTime
         ? "Hora de inicio"
         : "Hora de fin";
       setError(`Falta el campo requerido: ${missingField}.`);
@@ -43,7 +46,6 @@ const AppointmentForm = () => {
 
     try {
       // 2. Formateo de fechas a ISO 8601
-      // El input de tipo 'datetime-local' proporciona un formato que JavaScript puede interpretar.
       const formattedData = {
         ...formData,
         startTime: new Date(formData.startTime).toISOString(),
@@ -75,49 +77,15 @@ const AppointmentForm = () => {
       {success && <p className="success-message">¡Cita creada con éxito! 🎉</p>}
       {error && <p className="error-message">Error: {error} 🙁</p>}
       <form onSubmit={handleSubmit}>
+        {/* Los campos locationId, calendarId, contactId y assignedUserId han sido eliminados del formulario */}
         <div className="form-group">
-          <label htmlFor="locationId">ID de la Ubicación:</label>
+          <label htmlFor="title">Nombre:</label>
           <input
             type="text"
-            id="locationId"
-            name="locationId"
-            value={formData.locationId}
+            id="title"
+            name="title"
+            value={formData.title}
             onChange={handleChange}
-            readOnly
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="calendarId">ID del Calendario:</label>
-          <input
-            type="text"
-            id="calendarId"
-            name="calendarId"
-            value={formData.calendarId}
-            onChange={handleChange}
-            readOnly
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="assignedUserId">ID de Usuario Asignado:</label>
-          <input
-            type="text"
-            id="assignedUserId"
-            name="assignedUserId"
-            value={formData.assignedUserId}
-            onChange={handleChange}
-            readOnly
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="contactId">ID del Contacto:</label>
-          <input
-            type="text"
-            id="contactId"
-            name="contactId"
-            value={formData.contactId}
-            onChange={handleChange}
-            required
-            placeholder="Ingrese el ID del contacto"
           />
         </div>
         <div className="form-group">
@@ -140,16 +108,6 @@ const AppointmentForm = () => {
             value={formData.endTime}
             onChange={handleChange}
             required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="title">Título:</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
           />
         </div>
         <button type="submit" disabled={loading}>
