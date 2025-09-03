@@ -1,53 +1,53 @@
 # API High Level
 
-Una aplicación web moderna con arquitectura frontend que incluye gestión de citas médicas y componentes reutilizables.
+Una API moderna y escalable construida con las mejores prácticas de desarrollo.
+
+## 📋 Descripción
+
+API High Level es un proyecto que proporciona servicios web robustos y eficientes, diseñado con una arquitectura modular y escalable. El proyecto incluye funcionalidades avanzadas para el manejo de datos y servicios web.
 
 ## 🚀 Características
 
-- **API RESTful** para gestión de appointments
-- **Componentes modulares** y reutilizables
-- **Interfaz moderna** con CSS y JSX
-- **Configuración de desarrollo** optimizada con Vite
-- **Estructura organizada** por módulos y funcionalidades
+- ✅ API RESTful moderna
+- ✅ Arquitectura modular y escalable
+- ✅ Configuración con Vite para desarrollo rápido
+- ✅ Linting con ESLint para código limpio
+- ✅ Base de datos SQLite integrada
+- ✅ Scripts de gestión automatizados
+- ✅ Workflows de GitHub Actions para CI/CD
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Frontend/Build**: Vite.js
+- **Linting**: ESLint
+- **Base de Datos**: SQLite
+- **Control de Versiones**: Git/GitHub
+- **CI/CD**: GitHub Actions
+- **Gestión de Dependencias**: npm/yarn
 
 ## 📁 Estructura del Proyecto
 
 ```
-frontend/
-├── node_modules/           # Dependencias del proyecto
-├── public/                 # Archivos públicos estáticos
-├── src/                    # Código fuente principal
-│   ├── api/
-│   │   └── appointments.js # API para gestión de citas
-│   ├── components/         # Componentes React/JS
-│   │   ├── App.css        # Estilos de la aplicación principal
-│   │   ├── App.jsx        # Componente principal
-│   │   ├── index.css      # Estilos globales
-│   │   ├── index.jsx      # Punto de entrada de componentes
-│   │   └── main.jsx       # Archivo principal de la aplicación
-├── .env                    # Variables de entorno
-├── .gitignore             # Archivos ignorados por Git
-├── eslint.config.js       # Configuración de ESLint
-├── index.html             # Archivo HTML principal
-├── package-lock.json      # Lock de dependencias
-├── package.json           # Configuración y dependencias
-└── vite.config.js         # Configuración de Vite
+api-high-level/
+├── .github/workflows/    # GitHub Actions workflows
+├── mi_proyecto/         # Módulo principal del proyecto
+├── public/             # Archivos estáticos públicos
+├── src/               # Código fuente principal
+├── ghl_api/          # Módulo API específico
+├── .env              # Variables de entorno
+├── .gitignore        # Archivos ignorados por Git
+├── README.md         # Documentación del proyecto
+├── eslint.config.js  # Configuración de ESLint
+├── index.html        # Archivo HTML principal
+├── package.json      # Dependencias y scripts de npm
+├── package-lock.json # Lockfile de dependencias
+├── requirements.txt  # Dependencias de Python (si aplica)
+├── vite.config.js    # Configuración de Vite
+├── db.sqlite3        # Base de datos SQLite
+└── manage.py         # Script de gestión
 ```
 
-## 🛠️ Tecnologías Utilizadas
-
-- **Frontend Framework**: React/JavaScript
-- **Build Tool**: Vite
-- **Linting**: ESLint
-- **Styling**: CSS3
-- **Package Manager**: npm
-
-## 📋 Requisitos Previos
-
-- Node.js (v14 o superior)
-- npm o yarn
-
-## 🚀 Instalación y Configuración
+## 🔧 Instalación
 
 1. **Clonar el repositorio**
    ```bash
@@ -55,88 +55,149 @@ frontend/
    cd api-high-level
    ```
 
-2. **Cambiar a la rama de desarrollo**
-   ```bash
-   git checkout fr
-   ```
-
-3. **Navegar al directorio frontend**
-   ```bash
-   cd frontend
-   ```
-
-4. **Instalar dependencias**
+2. **Instalar dependencias de Node.js**
    ```bash
    npm install
+   # o
+   yarn install
    ```
 
-5. **Configurar variables de entorno**
+3. **Instalar dependencias de Python (si aplica)**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Configurar variables de entorno**
    ```bash
    cp .env.example .env
-   # Editar el archivo .env con tus configuraciones
+   # Editar .env con tus configuraciones
    ```
 
-6. **Ejecutar en modo desarrollo**
-   ```bash
-   npm run dev
-   ```
+## 🚀 Uso
 
-## 📝 Scripts Disponibles
+### Desarrollo
 
-- `npm run dev` - Inicia el servidor de desarrollo
-- `npm run build` - Construye la aplicación para producción
-- `npm run preview` - Previsualiza la build de producción
-- `npm run lint` - Ejecuta ESLint para revisar el código
+```bash
+# Iniciar servidor de desarrollo
+npm run dev
 
-## 🏥 Funcionalidades Principales
+# Ejecutar linting
+npm run lint
 
-### Gestión de Appointments
-- Crear nuevas citas médicas
-- Consultar citas existentes
-- Actualizar información de appointments
-- Eliminar citas
+# Construir para producción
+npm run build
+```
 
-### Componentes
-- Interfaz de usuario modular
-- Componentes reutilizables
-- Estilos consistentes y modernos
+### Gestión de la Base de Datos
 
-## 🌐 API Endpoints
+```bash
+# Ejecutar migraciones (si aplica)
+python manage.py migrate
 
-La aplicación incluye una API para gestión de appointments ubicada en `src/api/appointments.js`.
+# Crear superusuario (si aplica)
+python manage.py createsuperuser
+```
 
-## 🚀 Despliegue
+## 📖 Documentación de la API
 
-Para desplegar la aplicación:
+La API proporciona los siguientes endpoints principales:
 
-1. **Construir para producción**
-   ```bash
-   npm run build
-   ```
+```
+GET    /api/          # Información general de la API
+POST   /api/data      # Crear nuevos datos
+GET    /api/data      # Obtener datos
+PUT    /api/data/:id  # Actualizar datos
+DELETE /api/data/:id  # Eliminar datos
+```
 
-2. **Los archivos optimizados estarán en el directorio `dist/`**
+### Ejemplo de Uso
 
-## 🤝 Contribución
+```javascript
+// Obtener datos
+fetch('/api/data')
+  .then(response => response.json())
+  .then(data => console.log(data));
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+// Crear nuevos datos
+fetch('/api/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    name: 'Ejemplo',
+    value: 'Datos de prueba'
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+
+## 🔄 CI/CD
+
+El proyecto incluye workflows de GitHub Actions para:
+
+- ✅ Pruebas automatizadas
+- ✅ Linting de código
+- ✅ Construcción automática
+- ✅ Despliegue continuo
+
+## 🤝 Contribuidores
+
+## 🤝 Contribuidores
+
+Gracias a todas las personas que han contribuido a este proyecto de integración con GoHighLevel:
+
+- **[Jaime-D-Z](https://github.com/Jaime-D-Z)** 
+- **[goldz9999](https://github.com/goldz9999)**
+- **[joelPalaciosLaricano](https://github.com/joelPalaciosLaricano)**
+
+## 📋 Scripts Disponibles
+
+```bash
+npm run dev          # Servidor de desarrollo
+npm run build        # Construir para producción
+npm run preview      # Vista previa de la construcción
+npm run lint         # Ejecutar ESLint
+npm run lint:fix     # Arreglar errores de linting automáticamente
+```
+
+## 🐛 Reportar Problemas
+
+Si encuentras algún problema, por favor crea un [issue](https://github.com/joelPalaciosLaricano/api-high-level/issues) en GitHub.
 
 ## 📄 Licencia
 
-Este proyecto está bajo la licencia MIT. Ver el archivo `LICENSE` para más detalles.
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-## 👨‍💻 Autor
+## 🌟 Características Futuras
 
-**Joel Palacios Laricano**
-- GitHub: [@joelPalaciosLaricano](https://github.com/joelPalaciosLaricano)
+### Backend
+- [ ] Autenticación JWT con Django REST Framework
+- [ ] Documentación automática con DRF Spectacular
+- [ ] Tests unitarios con Django TestCase
+- [ ] Serializers avanzados para la API
+- [ ] Middleware personalizado
+- [ ] Cache con Redis
 
-## 📞 Soporte
+### Frontend
+- [ ] Autenticación de usuarios
+- [ ] Dashboard administrativo
+- [ ] Tests con Vitest
+- [ ] PWA (Progressive Web App)
+- [ ] Componentes reutilizables
 
-Si tienes alguna pregunta o problema, no dudes en abrir un issue en el repositorio.
+### DevOps
+- [ ] Dockerización completa (Django + Vite)
+- [ ] Configuración para producción
+- [ ] Monitoreo y logging avanzado
+- [ ] Rate limiting en la API
+- [ ] Base de datos PostgreSQL para producción
 
 ---
 
-⭐ Si te gusta este proyecto, ¡dale una estrella en GitHub!
+⭐ ¡No olvides darle una estrella al proyecto si te resulta útil!
+
+## 📞 Contacto
+
+Para más información o consultas, puedes contactar a los mantenedores del proyecto a través de GitHub.
