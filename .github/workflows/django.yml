@@ -2,15 +2,9 @@ name: Backend - Django CI
 
 on:
   push:
-    paths:
-      - "mi_proyecto/**"
-      - "ghl_api/**"
-      - "requirements.txt"
+    branches: ["main"]
   pull_request:
-    paths:
-      - "mi_proyecto/**"
-      - "ghl_api/**"
-      - "requirements.txt"
+    branches: ["main"]
 
 jobs:
   django-tests:
